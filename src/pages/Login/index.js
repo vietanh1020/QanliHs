@@ -18,8 +18,8 @@ function Login() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        let regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-        if (!email.match(regex)) alert('Email không hợp lệ!');
+        // let regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        // if (!email.match(regex)) alert('Email không hợp lệ!');
         try {
             const user = await login(email, password);
 

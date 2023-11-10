@@ -1,9 +1,9 @@
 import classNames from 'classnames/bind';
 import { useEffect, useState } from 'react';
-import { deleteStudent, getStudent, getStudentByName } from '~/apis';
-import styles from './QuanLiSV.module.scss';
 import { Button, Form } from 'react-bootstrap';
+import { deleteStudent, getStudent } from '~/apis';
 import SinhVienModal from '../modals/SinhVien';
+import styles from './QuanLiSV.module.scss';
 
 const cx = classNames.bind(styles);
 
@@ -23,36 +23,32 @@ function QuanLiSV() {
         const shouldDelete = window.confirm('Bạn có chắc chắn muốn xóa sinh viên này?');
         if (shouldDelete) {
             try {
-                setRefetch(!refetch);
                 await deleteStudent(id);
-            }
-            catch {
+                setRefetch(!refetch);
+            } catch {
                 alert('Sinh viên đang trong danh sách môn học');
             }
         }
-
     };
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                let response = await getStudent();
-                if (search !== '') {
-                    response = await getStudentByName(search);
-                }
+                let response = await getStudent(search);
                 setStudents(response);
             } catch (error) {
                 console.error('Lỗi lấy dữ liệu', error);
             }
         };
-        fetchData()
-    }, [students, refetch, search]);
+        fetchData();
+    }, [refetch, search]);
 
     return (
         <div className={cx('wrapper')}>
             <h1 className={cx('title')}>Danh sách sinh viên</h1>
             <div className={cx('info-lop')}>
-                <Form.Control style={{ width: 400 }}
+                <Form.Control
+                    style={{ width: 400 }}
                     type="text"
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}

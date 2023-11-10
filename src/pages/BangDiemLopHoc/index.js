@@ -10,7 +10,6 @@ function BangDiemLopHoc() {
         if (id) {
             try {
                 gvGetDiem(id).then((data) => {
-                    console.log(data);
                     setCSVData(data);
                 });
             } catch (error) {
