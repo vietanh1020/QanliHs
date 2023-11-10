@@ -21,7 +21,7 @@ const privateRoutes = [
     { path: '/', component: Home, layout: SidebarLayout },
     { path: '/course/:id', component: BangDiemLopHoc, layout: SidebarLayout },
     { path: '/sinh-vien/:id', component: BangDiemSV, layout: SidebarLayout },
-    { path: '/score/admin/:id', component: BangDiemHp, layout: SidebarLayout },
+    { path: '/admin/score/:id', component: BangDiemHp, layout: SidebarLayout },
     { path: '/login', component: Login },
     { path: '/admin', component: Admin, layout: SidebarLayout, childrenlayout: datalistmenu },
     { path: '/admin/qlsv', component: QuanLiSV, layout: SidebarLayout },

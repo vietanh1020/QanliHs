@@ -3,7 +3,7 @@ import { Button, Form, Modal } from 'react-bootstrap';
 import { gvUpdateCourse } from '~/apis';
 
 export default function UpdateCourseModal({ show, handleClose, data }) {
-    console.log(data)
+    console.log(data);
     const [name, setname] = useState('');
     const [gv, setGV] = useState('');
     const [so_tc, setso_tc] = useState(3);
@@ -13,10 +13,9 @@ export default function UpdateCourseModal({ show, handleClose, data }) {
     const [year, setyear] = useState(new Date().getFullYear());
     const [hocKi, setKiHoc] = useState('1');
     const [desc, setDesc] = useState('');
-    const [totalSV, settotalSV] = useState(40);
+    const [totalSV, settotalSV] = useState(0);
     const [address, setaddress] = useState('');
-    // console.log(name, gv, so_tc, from, to, date, year, hocKi, address)
-    // console.log(data)
+
     useEffect(() => {
         if (data) {
             setname(data.name);
@@ -51,11 +50,9 @@ export default function UpdateCourseModal({ show, handleClose, data }) {
                 hocKi,
                 desc,
                 address,
-                totalSV: Number(totalSV)
-            }
-            await gvUpdateCourse(courseUpdate,
-                data.id,
-            );
+                totalSV: Number(totalSV),
+            };
+            await gvUpdateCourse(courseUpdate, data.id);
         } catch (error) {
             alert(error);
         }
@@ -139,13 +136,13 @@ export default function UpdateCourseModal({ show, handleClose, data }) {
                                     <Form.Label>Từ tiết</Form.Label>
                                     <Form.Control
                                         value={from}
-                                        onChange={(e) => setFrom(e.target.value)}
+                                        onChange={(e) => setFrom(+e.target.value)}
                                         type="number"
                                     />
                                 </Form.Group>
                                 <Form.Group className="mb-3 col-3" controlId="email">
                                     <Form.Label>Đến tiết</Form.Label>
-                                    <Form.Control value={to} onChange={(e) => setTo(e.target.value)} type="number" />
+                                    <Form.Control value={to} onChange={(e) => setTo(+e.target.value)} type="number" />
                                 </Form.Group>
                             </div>
 

@@ -14,12 +14,8 @@ export const login = async (email, password) => {
     // return null;
 };
 
-export const getStudent = async () => {
-    const { data } = await axios.get(backendUrl + '/user');
-    return data;
-};
-export const getStudentByName = async (name) => {
-    const { data } = await axios.get(backendUrl + '/user/' + name);
+export const getStudent = async (search) => {
+    const { data } = await axios.get(backendUrl + `/user?search=${search}`);
     return data;
 };
 
@@ -27,18 +23,15 @@ export const getSvbyMsv = async (msv) => {
     try {
         const { data } = await axios.get(backendUrl + '/user/masv/' + msv);
         return data;
-    }
-    catch {
+    } catch {
         return null;
     }
-
-
 };
 
 export const createSv = async (sv) => {
     const { data } = await axios.post(backendUrl + '/user/sinh-vien', sv);
     return data;
-}
+};
 
 export const deleteStudent = async (id) => {
     await axios.delete(backendUrl + '/user/' + id);
@@ -62,7 +55,7 @@ export const gvDeleteCourse = async (id) => {
 };
 
 export const gvUpdateCourse = async (course, id) => {
-    console.log(course)
+    console.log(course);
     return await axios.put(backendUrl + '/course/' + id, course);
 };
 
@@ -106,14 +99,13 @@ export const gvUpdateDiemSv = async (classId, dataDiem) => {
     try {
         dataDiem.map(async (value) => {
             await axios.post(backendUrl + '/score/course/' + classId, value);
-        })
-    }
-    catch (error) {
-        return alert(error)
+        });
+    } catch (error) {
+        return alert(error);
     }
     // const { data } = await axios.post(backendUrl + '/score/course/' + classId, dataDiem)
-    return true
-}
+    return true;
+};
 export const svGetDiem = async (sv_id) => {
     const { data } = await axios.get(backendUrl + '/diem');
     return data.filter((item) => item.ma_sv === sv_id);

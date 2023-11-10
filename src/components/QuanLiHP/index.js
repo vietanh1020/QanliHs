@@ -28,7 +28,7 @@ function QuanLiHP() {
         gvGetListCourse(search).then((data) => {
             setCourses(data);
         });
-    }, [courses, refetch, search]);
+    }, [refetch, search]);
 
     return (
         <div>
@@ -37,7 +37,8 @@ function QuanLiHP() {
             </div>
             <div classNames="d-flex align-item-center">
                 <div className="ms-4 col col-6 d-flex">
-                    <Form.Control style={{ width: 400 }}
+                    <Form.Control
+                        style={{ width: 400 }}
                         type="text"
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
@@ -47,7 +48,6 @@ function QuanLiHP() {
                         Thêm khóa học
                     </Button>
                 </div>
-
             </div>
             <Row className="">
                 {courses.map((course) => (

@@ -12,25 +12,8 @@ export default function AddCourseModal({ show, handleClose }) {
     const [year, setyear] = useState('2023-2024');
     const [hocKi, setKiHoc] = useState('1');
     const [desc, setDesc] = useState('');
-    const [totalSV, settotalSV] = useState(40);
+    const [totalSV, settotalSV] = useState(0);
     const [address, setaddress] = useState('');
-    // console.log(name, gv, so_tc, from, to, date, year, hocKi, address)
-    // console.log(data)
-    // useEffect(() => {
-    //     if (data) {
-    //         setname(data.name);
-    //         setGV(data?.gv);
-    //         setso_tc(data?.so_tc);
-    //         setFrom(data?.from);
-    //         setTo(data?.to);
-    //         setDate(data?.date);
-    //         setyear(data?.year);
-    //         setKiHoc(data?.hocKi);
-    //         setDesc(data?.desc);
-    //         settotalSV(data?.totalSV);
-    //         setaddress(data?.address);
-    //     }
-    // }, [data]);
 
     const onSubmit = async () => {
         if (!name || !gv || !so_tc || !from || !to || !date || !year || !hocKi || !address) {
@@ -50,9 +33,8 @@ export default function AddCourseModal({ show, handleClose }) {
                 hocKi,
                 desc,
                 address,
-                totalSV: Number(totalSV)
-            }
-            console.log(course)
+                totalSV: Number(totalSV),
+            };
             await gvCreateCourse(course);
         } catch (error) {
             alert(error);
@@ -70,7 +52,7 @@ export default function AddCourseModal({ show, handleClose }) {
                     </Modal.Header>
                     <Modal.Body>
                         <Form>
-                            <div className='row'>
+                            <div className="row">
                                 <Form.Group className="mb-3 col-9">
                                     <Form.Label>Tên học phần</Form.Label>
                                     <Form.Control value={name} onChange={(e) => setname(e.target.value)} type="text" />
@@ -85,7 +67,6 @@ export default function AddCourseModal({ show, handleClose }) {
                                 </Form.Group>
                             </div>
 
-
                             <div className="row">
                                 <Form.Group className="mb-3 col-9" controlId="exampleForm.ControlInput1">
                                     <Form.Label>Giáo viên</Form.Label>
@@ -95,7 +76,7 @@ export default function AddCourseModal({ show, handleClose }) {
                                     <Form.Label>Số tc:</Form.Label>
                                     <Form.Control
                                         value={so_tc}
-                                        onChange={(e) => setso_tc(e.target.value)}
+                                        onChange={(e) => setso_tc(+e.target.value)}
                                         type="number"
                                     />
                                 </Form.Group>
@@ -148,13 +129,13 @@ export default function AddCourseModal({ show, handleClose }) {
                                     <Form.Label>Từ tiết</Form.Label>
                                     <Form.Control
                                         value={from}
-                                        onChange={(e) => setFrom(e.target.value)}
+                                        onChange={(e) => setFrom(+e.target.value)}
                                         type="number"
                                     />
                                 </Form.Group>
                                 <Form.Group className="mb-3 col-3" controlId="email">
                                     <Form.Label>Đến tiết</Form.Label>
-                                    <Form.Control value={to} onChange={(e) => setTo(e.target.value)} type="number" />
+                                    <Form.Control value={to} onChange={(e) => setTo(+e.target.value)} type="number" />
                                 </Form.Group>
                             </div>
 

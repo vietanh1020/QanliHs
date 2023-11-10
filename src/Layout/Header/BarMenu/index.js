@@ -18,8 +18,8 @@ function BarMenu({ data }) {
                 <li>
                     {cookie.user && (
                         <div
-                            onClick={() => {
-                                removeCookie('user');
+                            onClick={async () => {
+                                await removeCookie('user');
                                 navigate('/login');
                             }}
                         >
