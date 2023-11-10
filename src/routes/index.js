@@ -1,4 +1,4 @@
-import Home from '~/pages/Home';
+import SvHome from '~/pages/Home';
 import Login from '~/pages/Login';
 import Admin from '~/pages/Admin';
 import SidebarLayout from '~/Layout/SidebarLayout';
@@ -18,7 +18,7 @@ const datalistmenu = [
     },
 ];
 const privateRoutes = [
-    { path: '/', component: Home, layout: SidebarLayout },
+    { path: '/', component: SvHome, layout: SidebarLayout },
     { path: '/course/:id', component: BangDiemLopHoc, layout: SidebarLayout },
     { path: '/sinh-vien/:id', component: BangDiemSV, layout: SidebarLayout },
     { path: '/admin/score/:id', component: BangDiemHp, layout: SidebarLayout },

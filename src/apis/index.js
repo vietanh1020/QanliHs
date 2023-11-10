@@ -106,7 +106,7 @@ export const gvUpdateDiemSv = async (classId, dataDiem) => {
     // const { data } = await axios.post(backendUrl + '/score/course/' + classId, dataDiem)
     return true;
 };
-export const svGetDiem = async (sv_id) => {
-    const { data } = await axios.get(backendUrl + '/diem');
-    return data.filter((item) => item.ma_sv === sv_id);
+export const svGetDiem = async (id) => {
+    const { data } = await axios.get(backendUrl + '/score/student/' + id);
+    return data;
 };
